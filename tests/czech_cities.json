@@ -1,0 +1,45 @@
+{
+  "directed": false,
+  "edges": [
+    {
+      "from": "Praha",
+      "to": "Brno",
+      "weight": 205
+    },
+    {
+      "from": "Praha",
+      "to": "Plzen",
+      "weight": 91
+    },
+    {
+      "from": "Praha",
+      "to": "Pardubice",
+      "weight": 109
+    },
+    {
+      "from": "Brno",
+      "to": "Ostrava",
+      "weight": 169
+    },
+    {
+      "from": "Brno",
+      "to": "Pardubice",
+      "weight": 152
+    },
+    {
+      "from": "Plzen",
+      "to": "Ceske_Budejovice",
+      "weight": 144
+    },
+    {
+      "from": "Pardubice",
+      "to": "Hradec_Kralove",
+      "weight": 28
+    },
+    {
+      "from": "Hradec_Kralove",
+      "to": "Liberec",
+      "weight": 120
+    }
+  ]
+}
