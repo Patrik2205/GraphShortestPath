@@ -1,9 +1,0 @@
-directed
-S A 10
-S B 8
-A C 2
-B A 1
-B D -4
-C B -2
-D C -1
-D E 3
