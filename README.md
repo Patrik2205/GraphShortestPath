@@ -1,67 +1,67 @@
-# Dijkstra's Shortest Path Algorithm
+# Dijkstrův algoritmus pro hledání nejkratších cest
 
-Implementation of Dijkstra's algorithm for finding shortest paths in graphs.
+Implementace Dijkstrova algoritmu pro hledání nejkratších cest v grafech.
 
-## About Dijkstra's Algorithm
+## O Dijkstrově algoritmu
 
-Dijkstra's algorithm finds the shortest path from a source vertex to all other vertices in a weighted graph with non-negative edge weights. It uses a greedy approach with a priority queue.
+Dijkstrův algoritmus nalézá nejkratší cestu ze zdrojového vrcholu do všech ostatních vrcholů v ohodnoceném grafu s nezápornými váhami hran. Používá chamtivý přístup s prioritní frontou.
 
-- **Time Complexity**: O((V + E) log V) with binary heap
-- **Space Complexity**: O(V)
-- **Limitation**: Cannot handle negative edge weights
+- **Časová složitost**: O((V + E) log V) s binární haldou
+- **Prostorová složitost**: O(V)
+- **Omezení**: Nefunguje s negativními vahami hran
 
-## Installation
+## Instalace
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Usage
+## Použití
 
 ```bash
-python main.py <input_file> -s <start_vertex> [options]
+python main.py <vstupní_soubor> -s <počáteční_vrchol> [volby]
 
-Required arguments:
-  input_file          Path to graph file
-  -s, --start         Start vertex for Dijkstra's algorithm
+Povinné argumenty:
+  vstupní_soubor      Cesta k souboru s grafem
+  -s, --start         Počáteční vrchol pro Dijkstrův algoritmus
 
-Optional arguments:
-  -e, --end           End vertex (shows specific path)
-  -o, --output        Save results to file
-  -v, --visualize     Show graph visualization
-  -h, --help          Show help message
+Volitelné argumenty:
+  -e, --end           Koncový vrchol (zobrazí konkrétní cestu)
+  -o, --output        Uložit výsledky do souboru
+  -v, --visualize     Zobrazit vizualizaci grafu
+  -h, --help          Zobrazit nápovědu
 ```
 
-### Examples
+### Příklady použití
 
 ```bash
-# Find shortest paths from vertex 1 in the example graph
+# Najít nejkratší cesty z vrcholu 1 v ukázkovém grafu
 python main.py tests/image_graph.txt -s 1
 
-# Find path from 1 to 5 with visualization
+# Najít cestu z 1 do 5 s vizualizací
 python main.py tests/image_graph.txt -s 1 -e 5 -v
 
-# Save results to file
+# Uložit výsledky do souboru
 python main.py tests/test_data.txt -s A -o output/results.txt
 
-# Run on Czech cities example
+# Spustit na příkladu českých měst
 python main.py tests/czech_cities.json -s Praha -e Ostrava -v
 ```
 
-## Input Format
+## Formát vstupních dat
 
-### Edge List Format
+### Formát seznamu hran
 ```
-# Comments start with #
+# Komentáře začínají #
 undirected
-vertex1 vertex2 weight
-vertex1 vertex3 weight
+vrchol1 vrchol2 váha
+vrchol1 vrchol3 váha
 ...
 ```
 
-For directed graphs, use `directed` instead of `undirected`.
+Pro orientované grafy použijte `directed` místo `undirected`.
 
-### JSON Format
+### JSON formát
 ```json
 {
   "directed": false,
@@ -72,57 +72,66 @@ For directed graphs, use `directed` instead of `undirected`.
 }
 ```
 
-## Test Files
+## Testovací soubory
 
-- `tests/image_graph.txt` - Graph from the provided image (vertices 1-5)
-- `tests/test_data.txt` - General test graph
-- `tests/directed_graph.txt` - Example directed graph
-- `tests/czech_cities.json` - Real-world example with Czech cities
-- `tests/dijkstra_example.json` - JSON format example
+- `tests/image_graph.txt` - Graf z přiloženého obrázku (vrcholy 1-5)
+- `tests/test_data.txt` - Obecný testovací graf
+- `tests/directed_graph.txt` - Příklad orientovaného grafu
+- `tests/czech_cities.json` - Reálný příklad s českými městy
+- `tests/extended_graph.txt` - Rozšířený testovací graf
 
-## Project Structure
+## Struktura projektu
 
 ```
 .
-├── main.py                 # Main application
-├── example.py              # Example usage
-├── setup.py                # Setup script
-├── requirements.txt        # Python dependencies
+├── main.py                    # Hlavní aplikace
+├── example.py                 # Ukázkové použití
+├── setup.py                   # Instalační skript
+├── requirements.txt           # Python závislosti
 ├── src/
 │   ├── __init__.py
-│   ├── graph.py           # Graph data structure
-│   ├── dijkstra.py        # Dijkstra's algorithm
-│   ├── visualization.py   # Graph visualization
-│   └── file_handler.py    # File I/O operations
-├── tests/                 # Test data files
-├── documentation/         # Algorithm documentation
-└── output/                # Output files
+│   ├── graph.py              # Struktura grafu
+│   ├── dijkstra.py           # Dijkstrův algoritmus
+│   ├── visualization.py      # Vizualizace grafu
+│   └── file_handler.py       # Operace se soubory
+├── tests/                    # Testovací datové soubory
+├── documentation/            # Dokumentace algoritmu
+└── output/                   # Výstupní soubory
 ```
 
-## Algorithm Details
+## Detaily algoritmu
 
-Dijkstra's algorithm works by:
-1. Starting with the source vertex at distance 0
-2. Maintaining a priority queue of unvisited vertices
-3. Always processing the closest unvisited vertex
-4. Updating distances to neighbors (relaxation)
-5. Continuing until all reachable vertices are processed
+Dijkstrův algoritmus funguje tak, že:
+1. Začíná se zdrojovým vrcholem na vzdálenosti 0
+2. Udržuje prioritní frontu nenavštívených vrcholů
+3. Vždy zpracovává nejbližší nenavštívený vrchol
+4. Aktualizuje vzdálenosti k sousedům (relaxace)
+5. Pokračuje, dokud nejsou zpracovány všechny dosažitelné vrcholy
 
-The algorithm guarantees finding the shortest path in graphs with non-negative edge weights.
+Algoritmus zaručuje nalezení nejkratší cesty v grafech s nezápornými vahami hran.
 
-## Visualization
+## Vizualizace
 
-The implementation includes graphical visualization features:
-- **Original graph** - Shows the input graph structure
-- **Shortest path** - Highlights a specific path in red
-- **Complete solution** - Shows all shortest paths from source with distances
+Implementace zahrnuje funkce grafické vizualizace:
+- **Původní graf** - Zobrazuje strukturu vstupního grafu
+- **Nejkratší cesta** - Zvýrazňuje konkrétní cestu červeně
+- **Kompletní řešení** - Zobrazuje všechny nejkratší cesty ze zdroje se vzdálenostmi
 
-## Performance
+## Výkon
 
-- Small graphs (< 100 vertices): < 1ms
-- Medium graphs (100-1,000 vertices): 1-10ms  
-- Large graphs (> 10,000 vertices): 10-100ms
+- Malé grafy (< 100 vrcholů): < 1ms
+- Střední grafy (100-1,000 vrcholů): 1-10ms  
+- Velké grafy (> 10,000 vrcholů): 10-100ms
 
-## Author
+## Teoretická dokumentace
 
-This implementation was created as part of a graph algorithms study project.
+Kompletní teoretická dokumentace je k dispozici v souboru `documentation/dijkstra-teoria.md`, která pokrývá:
+- Úvod do grafů a jejich reprezentace
+- Problém nejkratších cest
+- Detailní popis Dijkstrova algoritmu
+- Porovnání s ostatními algoritmy
+- Praktické aplikace a rozšíření
+
+## Autor
+
+Tato implementace byla vytvořena jako součást projektu algoritmy na grafech.
