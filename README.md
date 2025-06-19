@@ -89,7 +89,6 @@ Pro orientované grafy použijte `directed` místo `undirected`.
 ├── setup.py                   # Instalační skript
 ├── requirements.txt           # Python závislosti
 ├── src/
-│   ├── __init__.py
 │   ├── graph.py              # Struktura grafu
 │   ├── dijkstra.py           # Dijkstrův algoritmus
 │   ├── visualization.py      # Vizualizace grafu
@@ -125,7 +124,7 @@ Implementace zahrnuje funkce grafické vizualizace:
 
 ## Teoretická dokumentace
 
-Kompletní teoretická dokumentace je k dispozici v souboru `documentation/dijkstra-teoria.md`, která pokrývá:
+Kompletní teoretická dokumentace je k dispozici v souboru `documentation/dijkstra.md`, která pokrývá:
 - Úvod do grafů a jejich reprezentace
 - Problém nejkratších cest
 - Detailní popis Dijkstrova algoritmu
